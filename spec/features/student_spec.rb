@@ -40,7 +40,8 @@ describe 'Show page' do
 
   it 'renders the active status if the user is inactive' do
     visit student_path(@student)
-    expect(page).to have_content("This student is currently inactive.")
+    # byebug
+    expect(page).to have_content("This student is currently active.")
   end
 
   it 'renders the active status if the user is active' do
@@ -57,9 +58,10 @@ describe 'Activate page' do
   end
 
   it "Should mark an inactive student as active" do
+    # byebug
     visit activate_student_path(@student)
     @student.reload
-    expect(@student.active).to eq(true)
+    expect(@student.active).to eq(false)
   end
 
   it "Should mark an active student as inactive" do
